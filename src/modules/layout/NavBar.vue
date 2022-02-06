@@ -9,5 +9,5 @@
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/layout/nav-bar.scss";
+@import "@styles/layout/nav-bar.scss";
 </style>
