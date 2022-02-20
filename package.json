@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "test:unit": "jest src/__tests__/unit",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "vite build && firebase deploy"
+    "deploy": "vite build && firebase deploy",
+    "test:unit": "jest src/__tests__/unit",
+    "test:unit:watch": "jest --watch src/__tests__/unit"
   },
   "dependencies": {
     "vue": "^3.2.25",
