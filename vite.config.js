@@ -9,7 +9,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@stores': path.resolve(__dirname, './src/stores'),
-      '@layout': path.resolve(__dirname, './src/modules/layout'),
+      '@layout': path.resolve(__dirname, './src/layout'),
       '@home': path.resolve(__dirname, './src/modules/home'),
       '@about': path.resolve(__dirname, './src/modules/about'),
     },
