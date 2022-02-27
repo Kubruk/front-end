@@ -5,7 +5,6 @@
   </nav>
 </template>
 
-
 <script setup>
 import { storeToRefs } from "pinia";
 import { useStore } from "@/stores/user";

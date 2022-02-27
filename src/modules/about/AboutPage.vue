@@ -2,5 +2,4 @@
   <h1>Acerca de</h1>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
