@@ -6,8 +6,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "vite build && firebase deploy",
-    "test:unit": "jest src/__tests__/unit",
-    "test:unit:watch": "jest --watch src/__tests__/unit"
+    "test:unit": "jest __tests__/unit",
+    "test:unit:watch": "jest --watch __tests__/unit"
   },
   "dependencies": {
     "pinia": "^2.0.11",

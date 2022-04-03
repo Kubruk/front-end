@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import { storeToRefs } from "pinia";
-import { useStore } from "@/stores/user";
+import { storeToRefs } from 'pinia';
+import { useStore } from '@/stores/user';
 
 const user = useStore();
 const { isLogged } = storeToRefs(user);
@@ -16,5 +16,5 @@ console.log(`${isLogged.value}`, isLogged.value);
 </script>
 
 <style lang="scss" scoped>
-@import "@styles/layout/nav-bar.scss";
+@import '@styles/layout/nav-bar.scss';
 </style>
