@@ -7,4 +7,6 @@
 import NavBar from '@layout/NavBar.vue';
 </script>
 
-<style></style>
+<style lang="scss">
+@use '@styles/reset.scss';
+</style>

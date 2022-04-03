@@ -1,0 +1,9 @@
+.nav-bar{
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  &__link{
+    background: gray;
+    padding: 5px 20px;
+  }
+}

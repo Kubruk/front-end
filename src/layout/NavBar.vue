@@ -2,6 +2,10 @@
   <nav class="nav-bar">
     <router-link class="nav-bar__link" to="/">Home</router-link>&nbsp;
     <router-link class="nav-bar__link" to="/about">Acerca de</router-link>
+    <router-link v-if="isLogged" class="nav-bar__link" to="/logout">
+      Logout
+    </router-link>
+    <router-link v-else class="nav-bar__link" to="/login">Login</router-link>
   </nav>
 </template>
 
@@ -16,5 +20,5 @@ console.log(`${isLogged.value}`, isLogged.value);
 </script>
 
 <style lang="scss" scoped>
-@import '@styles/layout/nav-bar.scss';
+@use '@styles/layout/nav-bar.module.scss';
 </style>

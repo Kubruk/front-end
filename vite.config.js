@@ -11,7 +11,8 @@ export default defineConfig({
       '@stores': path.resolve(__dirname, './src/stores'),
       '@layout': path.resolve(__dirname, './src/layout'),
       '@home': path.resolve(__dirname, './src/modules/home'),
-      '@about': path.resolve(__dirname, './src/modules/about')
+      '@about': path.resolve(__dirname, './src/modules/about'),
+      '@login': path.resolve(__dirname, './src/modules/login')
     }
   },
   plugins: [vue()]
