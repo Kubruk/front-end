@@ -1,10 +1,10 @@
 <template>
-  <NavBar />
+  <SideBar />
   <router-view />
 </template>
 
 <script setup>
-import NavBar from '@layout/NavBar.vue';
+import SideBar from '@layout/SideBar.vue';
 </script>
 
 <style lang="scss">
