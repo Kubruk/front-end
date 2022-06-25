@@ -19,7 +19,6 @@ const user = useStore();
 const { isLogged } = storeToRefs(user);
 
 const menu = new SideBarMenu(isLogged.value).getMenu();
-console.log(menu);
 </script>
 
 <style lang="scss" scoped>
