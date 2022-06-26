@@ -5,7 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 html, body {
-    min-height: 100% !important;
+    min-width: 100vh;
+    min-height: 100vh;
     height: 100%;
 }
 

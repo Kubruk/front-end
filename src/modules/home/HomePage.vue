@@ -1,5 +1,5 @@
 <template>
-  <main class="main-page flex items-center justify-center">
+  <main class="main-page md:flex md:items-center md:justify-center">
     <BookCard
       v-for="book in books"
       :key="book.title"
