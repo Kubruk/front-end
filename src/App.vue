@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen min-w-screen bg-alabaster">
+  <div class="min-h-screen min-w-screen bg-alabaster-400">
     <SideBar />
     <router-view />
   </div>

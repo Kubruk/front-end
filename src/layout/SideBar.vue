@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-bar bg-bright-gray text-alabaster">
+  <nav class="nav-bar bg-bright-gray text-alabaster-400">
     <ul class="nav-bar__content">
       <li class="nav-bar__content--item">
         <KubrukLogo class="nav-bar__logo" />
