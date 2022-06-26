@@ -13,8 +13,9 @@ export default defineConfig({
       '@layout': path.resolve(__dirname, './src/layout'),
       '@home': path.resolve(__dirname, './src/modules/home'),
       '@about': path.resolve(__dirname, './src/modules/about'),
-      '@login': path.resolve(__dirname, './src/modules/login'),
-      '@assets': path.resolve(__dirname, './src/assets')
+      '@auth': path.resolve(__dirname, './src/modules/auth'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@components': path.resolve(__dirname, './src/components')
     }
   },
   plugins: [vue(), svgLoader()]

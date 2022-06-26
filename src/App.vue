@@ -9,4 +9,5 @@ import SideBar from '@layout/SideBar.vue';
 
 <style lang="scss">
 @use '@styles/reset.scss';
+@use '@styles/index.css';
 </style>

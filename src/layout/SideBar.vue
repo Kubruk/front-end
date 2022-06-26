@@ -1,15 +1,18 @@
 <template>
-  <nav class="nav-bar">
-    <ul v-if="menu" class="nav-bar__content">
+  <nav class="nav-bar bg-bright-gray text-alabaster">
+    <ul class="nav-bar__content">
       <li class="nav-bar__content--item">
         <KubrukLogo class="nav-bar__logo" />
         <router-link to="/">
           <h1 class="nav-bar__logo--title">Kubruk</h1>
         </router-link>
       </li>
-      <li v-for="item in menu" :key="item.title" class="nav-bar__content--item">
-        <router-link :to="item.route">
-          {{ item.title }}
+      <li class="nav-bar__content--item">
+        <router-link to="/login">
+          <Button name="Login" ghost />
+        </router-link>
+        <router-link to="/sign-up">
+          <Button class="ml-4" name="Sign up" />
         </router-link>
       </li>
     </ul>
@@ -19,13 +22,11 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { useStore } from '@/stores/user';
-import { SideBarMenu } from './SideBarMenu';
 import KubrukLogo from '@assets/book-svgrepo-com.svg';
+import Button from '@components/Button.vue';
 
 const user = useStore();
 const { isLogged } = storeToRefs(user);
-
-const menu = new SideBarMenu(isLogged.value).getMenu();
 </script>
 
 <style lang="scss" scoped>
