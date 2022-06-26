@@ -1,8 +1,14 @@
 <template>
   <nav class="nav-bar">
     <ul v-if="menu" class="nav-bar__content">
-      <li v-for="item in menu" :key="item.title">
-        <router-link class="nav-bar__link" :to="item.route">
+      <li class="nav-bar__content--item">
+        <KubrukLogo class="nav-bar__logo" />
+        <router-link to="/">
+          <h1 class="nav-bar__logo--title">Kubruk</h1>
+        </router-link>
+      </li>
+      <li v-for="item in menu" :key="item.title" class="nav-bar__content--item">
+        <router-link :to="item.route">
           {{ item.title }}
         </router-link>
       </li>
@@ -14,6 +20,7 @@
 import { storeToRefs } from 'pinia';
 import { useStore } from '@/stores/user';
 import { SideBarMenu } from './SideBarMenu';
+import KubrukLogo from '../assets/book-svgrepo-com.svg';
 
 const user = useStore();
 const { isLogged } = storeToRefs(user);

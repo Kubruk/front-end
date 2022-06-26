@@ -7,7 +7,6 @@ export class SideBarMenu {
 
   getMenu() {
     const sideBar = [
-      new SideBarItem('/', 'Home'),
       new SideBarItem('/about', 'Acerca de'),
       this.isLogged
         ? new SideBarItem('/logout', 'Logout')
