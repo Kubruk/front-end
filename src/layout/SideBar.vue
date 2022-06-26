@@ -20,7 +20,7 @@
 import { storeToRefs } from 'pinia';
 import { useStore } from '@/stores/user';
 import { SideBarMenu } from './SideBarMenu';
-import KubrukLogo from '../assets/book-svgrepo-com.svg';
+import KubrukLogo from '@assets/book-svgrepo-com.svg';
 
 const user = useStore();
 const { isLogged } = storeToRefs(user);
