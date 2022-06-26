@@ -1,7 +1,11 @@
 <template>
-  <h1 class="login text-3xl">Login</h1>
+  <main class="main-page flex items-center justify-center">
+    <FormCard title="Login" />
+  </main>
 </template>
 
-<script setup></script>
+<script setup>
+import FormCard from '@components/FormCard.vue';
+</script>
 
 <style lang="scss" scoped></style>

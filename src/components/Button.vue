@@ -1,7 +1,7 @@
 <template>
   <button
     class="px-4 py-2 font-semibold rounded-md"
-    :class="{ 'bg-selective-yellow': !ghost, 'text-bright-gray': !ghost }"
+    :class="{ 'bg-sunglow': !ghost, 'text-bright-gray': !ghost }"
   >
     {{ name }}
   </button>

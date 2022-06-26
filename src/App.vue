@@ -1,6 +1,8 @@
 <template>
-  <SideBar />
-  <router-view />
+  <div class="min-h-screen min-w-screen bg-alabaster">
+    <SideBar />
+    <router-view />
+  </div>
 </template>
 
 <script setup>

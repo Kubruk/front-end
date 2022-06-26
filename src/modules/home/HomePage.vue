@@ -1,5 +1,7 @@
 <template>
-  <h1 class="home">Home</h1>
+  <main class="main-page flex items-center justify-center">
+    <h1 class="home">Home</h1>
+  </main>
 </template>
 
 <script setup></script>
