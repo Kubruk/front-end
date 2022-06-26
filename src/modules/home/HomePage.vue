@@ -5,7 +5,7 @@
       :key="book.title"
       :title="book.title"
       :description="book.description"
-      :portrait="book.portrait"
+      :cover="book.cover"
     />
   </main>
 </template>
