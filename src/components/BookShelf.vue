@@ -1,5 +1,8 @@
 <template>
-  <div v-if="books" class="h-1/2 grid-cols-5 grid-rows-2">
+  <div
+    v-if="books"
+    class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 md:grid-rows-2 p-8"
+  >
     <BookCard
       v-for="book in books"
       :key="book.title"
