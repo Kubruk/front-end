@@ -1,8 +1,9 @@
 <template>
-  <div class="flex justify-between align-center py-2">
-    <label class="w-2/6 font-semibold">{{ label }}</label>
+  <div class="py-2">
+    <label class="w-full font-semibold block">{{ label }}</label>
     <input
-      class="w-4/6 border border-alabaster-500 border-solid p-1"
+      :name="name"
+      class="block w-full border border-alabaster-500 border-solid p-1"
       :type="type"
     />
   </div>
@@ -18,6 +19,10 @@ export default {
     type: {
       type: String,
       default: 'text'
+    },
+    name: {
+      type: String,
+      default: null
     }
   }
 };

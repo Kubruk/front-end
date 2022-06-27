@@ -10,23 +10,21 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: ''
-    },
-    description: {
-      type: String,
-      default: ''
-    },
-    cover: {
-      type: String,
-      default: ''
-    }
+<script setup>
+const props = defineProps({
+  title: {
+    type: String,
+    default: ''
+  },
+  description: {
+    type: String,
+    default: ''
+  },
+  cover: {
+    type: String,
+    default: ''
   }
-};
+});
 </script>
 
 <style lang="scss" scoped></style>

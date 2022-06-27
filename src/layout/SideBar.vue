@@ -7,12 +7,15 @@
           <h1 class="nav-bar__logo--title">Kubruk</h1>
         </router-link>
       </li>
-      <li class="nav-bar__content--item">
+      <li v-if="isLogged" class="nav-bar__content--item">
+        <Button name="Logout" />
+      </li>
+      <li v-else class="nav-bar__content--item">
         <router-link to="/login">
-          <Button name="Login" ghost />
+          <Button name="Login" />
         </router-link>
         <router-link to="/sign-up">
-          <Button class="ml-4" name="Sign up" />
+          <Button class="ml-4" name="Sign up" cta />
         </router-link>
       </li>
     </ul>
@@ -21,11 +24,11 @@
 
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useStore } from '@/stores/user';
+import { userStore } from '@/stores/user';
 import KubrukLogo from '@assets/book-svgrepo-com.svg';
 import Button from '@components/Button.vue';
 
-const user = useStore();
+const user = userStore();
 const { isLogged } = storeToRefs(user);
 </script>
 
