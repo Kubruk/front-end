@@ -53,12 +53,15 @@ const login = async () => {
   loading.setLoading(true);
 
   try {
-    await axios.post(`${import.meta.env.VITE_API_URL}/auth`, form);
-    user.login();
-    router.push({ name: 'home' });
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/auth`,
+      form
+    );
+    user.onLogin(data.user);
   } catch (error) {
   } finally {
     loading.setLoading(false);
+    router.push({ name: 'home' });
   }
 };
 </script>
