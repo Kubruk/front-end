@@ -1,12 +1,14 @@
 <template>
   <div class="min-h-screen min-w-screen bg-alabaster-400">
-    <SideBar />
+    <NavBar />
+    <LoadingBar />
     <router-view />
   </div>
 </template>
 
 <script setup>
-import SideBar from '@layout/SideBar.vue';
+import NavBar from '@layout/NavBar.vue';
+import LoadingBar from '@components/LoadingBar.vue';
 </script>
 
 <style lang="scss">

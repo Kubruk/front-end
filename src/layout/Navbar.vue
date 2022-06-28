@@ -23,10 +23,10 @@
 </template>
 
 <script setup>
-import { storeToRefs } from 'pinia';
-import { userStore } from '@/stores/user';
 import KubrukLogo from '@assets/book-svgrepo-com.svg';
 import Button from '@components/Button.vue';
+import { storeToRefs } from 'pinia';
+import { userStore } from '@/stores/user';
 
 const user = userStore();
 const { isLogged } = storeToRefs(user);

@@ -16,7 +16,13 @@
         />
       </template>
       <template #footer>
-        <Button primary type="submit" class="ml-4" name="Login" />
+        <Button
+          primary
+          :disabled="isLoading"
+          type="submit"
+          class="ml-4"
+          name="Login"
+        />
       </template>
     </FormCard>
   </main>
@@ -28,25 +34,28 @@ import FormInput from '@components/FormInput.vue';
 import Button from '@components/Button.vue';
 import axios from 'axios';
 import { reactive, ref } from 'vue';
+import { storeToRefs } from 'pinia';
 import { userStore } from '@/stores/user';
+import { loadingStore } from '@/stores/loading';
 import { useRouter } from 'vue-router';
 
-const isLoading = ref(false);
 const form = reactive({
   email: '',
   password: ''
 });
 
+const loading = loadingStore();
+const { isLoading } = storeToRefs(loading);
 const user = userStore();
 const router = useRouter();
 
 const login = async () => {
-  isLoading.value = true;
+  loading.setLoading(true);
 
   try {
     await axios.post(`${import.meta.env.VITE_API_URL}/auth`, form);
-    isLoading.value = false;
     user.login();
+    loading.setLoading(false);
     router.push({ name: 'home' });
   } catch (error) {}
 };
