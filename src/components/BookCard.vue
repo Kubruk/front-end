@@ -5,6 +5,7 @@
     <h2
       class="text-3xl p-4 bg-bright-gray text-alabaster-400 text-ellipsis break-all whitespace-nowrap overflow-hidden"
     >
+      <i class="icofont-book-alt"></i>
       {{ title }}
     </h2>
     <div class="flex h-60">

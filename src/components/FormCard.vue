@@ -7,7 +7,7 @@
     <div class="flex flex-col align-center justify-center mb-4">
       <slot name="content" />
     </div>
-    <div class="border-t border-gray-300 border-solid flex justify-end pt-4">
+    <div class="flex justify-end pt-4">
       <slot name="footer" />
     </div>
   </form>
