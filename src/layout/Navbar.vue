@@ -9,6 +9,9 @@
       </li>
       <li v-if="isLogged" class="nav-bar__content--item">
         <Button name="Logout" />
+        <router-link :to="`/profile/${user.uid}`">
+          <Button class="ml-4" name="Profile" cta />
+        </router-link>
       </li>
       <li v-else class="nav-bar__content--item">
         <router-link to="/login">
@@ -28,8 +31,8 @@ import Button from '@components/Button.vue';
 import { storeToRefs } from 'pinia';
 import { userStore } from '@/stores/user';
 
-const user = userStore();
-const { isLogged } = storeToRefs(user);
+const userSt = userStore();
+const { isLogged, user } = storeToRefs(userSt);
 </script>
 
 <style lang="scss" scoped>
