@@ -59,6 +59,7 @@ const login = async () => {
     );
     user.onLogin(data.user);
   } catch (error) {
+    console.error(error);
   } finally {
     loading.setLoading(false);
     router.push({ name: 'home' });

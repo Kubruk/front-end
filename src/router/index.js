@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { auth } from './auth';
-import { user } from './user';
+import { users } from './users';
 
 const routes = [
   { name: 'home', path: '/', component: () => import('@home/HomePage.vue') },
   ...auth,
-  ...user
+  ...users
 ];
 
 const history = createWebHistory();

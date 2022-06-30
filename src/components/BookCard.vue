@@ -18,6 +18,14 @@
         {{ description }}
       </div>
     </div>
+    <div
+      v-if="author"
+      class="text-3xl p-4 bg-bright-gray text-alabaster-400 text-ellipsis break-all whitespace-nowrap overflow-hidden"
+    >
+      <router-link :to="`/users/${author._id}`">
+        {{ author.name }}
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -25,15 +33,19 @@
 const props = defineProps({
   title: {
     type: String,
-    default: ''
+    required: true
   },
   description: {
     type: String,
-    default: ''
+    required: true
   },
   cover: {
     type: String,
-    default: ''
+    required: true
+  },
+  author: {
+    type: [Object, String],
+    default: () => {}
   }
 });
 </script>

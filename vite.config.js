@@ -14,7 +14,7 @@ export default defineConfig({
       '@home': path.resolve(__dirname, './src/modules/home'),
       '@about': path.resolve(__dirname, './src/modules/about'),
       '@auth': path.resolve(__dirname, './src/modules/auth'),
-      '@user': path.resolve(__dirname, './src/modules/user'),
+      '@users': path.resolve(__dirname, './src/modules/users'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@components': path.resolve(__dirname, './src/components')
     }

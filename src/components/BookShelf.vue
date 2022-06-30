@@ -9,6 +9,7 @@
       :title="book.title"
       :description="book.description"
       :cover="book.cover"
+      :author="book.author"
     />
   </div>
 </template>
