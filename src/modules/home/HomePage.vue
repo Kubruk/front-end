@@ -7,13 +7,14 @@
 <script setup>
 import BookShelf from '@components/Bookshelf.vue';
 import axios from 'axios';
-import { ref, onMounted } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import { loadingStore } from '@/stores/loading';
 
 const loading = loadingStore();
 
 const books = ref([]);
-onMounted(async () => {
+
+onBeforeMount(async () => {
   loading.setLoading(true);
 
   try {

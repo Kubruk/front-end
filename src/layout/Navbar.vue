@@ -9,15 +9,15 @@
       </li>
       <li v-if="isLogged" class="nav-bar__content--item">
         <Button name="Logout" />
-        <router-link :to="`/profile/${user.uid}`">
+        <router-link :to="`/user/profile/${user.uid}`">
           <Button class="ml-4" name="Profile" cta />
         </router-link>
       </li>
       <li v-else class="nav-bar__content--item">
-        <router-link to="/login">
+        <router-link to="/auth/login">
           <Button name="Login" />
         </router-link>
-        <router-link to="/sign-up">
+        <router-link to="/auth/sign-up">
           <Button class="ml-4" name="Sign up" cta />
         </router-link>
       </li>

@@ -1,17 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { auth } from './auth';
+import { user } from './user';
 
 const routes = [
   { name: 'home', path: '/', component: () => import('@home/HomePage.vue') },
-  {
-    name: 'login',
-    path: '/login',
-    component: () => import('@auth/LoginPage.vue')
-  },
-  {
-    name: 'sign-up',
-    path: '/sign-up',
-    component: () => import('@auth/SignUpPage.vue')
-  }
+  ...auth,
+  ...user
 ];
 
 const history = createWebHistory();
