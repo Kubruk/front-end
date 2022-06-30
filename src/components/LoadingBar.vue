@@ -1,12 +1,12 @@
 <template>
-  <template>
+  <div>
     <div
       v-if="isLoading"
       style="width: 100%"
       class="absolute top-0 h-4 shim-green"
     />
     <div v-else class="h-4" />
-  </template>
+  </div>
 </template>
 
 <script setup>
