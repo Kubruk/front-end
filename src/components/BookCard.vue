@@ -2,12 +2,15 @@
   <div
     class="bg-white border rounded-lg shadow-sm mb-4 md:mb-0 place-self-center w-full"
   >
-    <h2
-      class="text-3xl p-4 bg-bright-gray text-alabaster-400 text-ellipsis break-all whitespace-nowrap overflow-hidden"
-    >
-      <i class="icofont-book-alt"></i>
-      {{ title }}
-    </h2>
+    <router-link :to="`/books/${bookId}`">
+      <h2
+        class="text-3xl p-4 bg-bright-gray text-alabaster-400 text-ellipsis break-all whitespace-nowrap overflow-hidden"
+      >
+        <i class="icofont-book-alt"></i>
+        {{ title }}
+      </h2>
+    </router-link>
+
     <div class="flex h-60">
       <img
         :src="cover"
@@ -46,6 +49,10 @@ const props = defineProps({
   author: {
     type: [Object, String],
     default: () => {}
+  },
+  bookId: {
+    type: String,
+    required: true
   }
 });
 </script>

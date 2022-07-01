@@ -6,6 +6,7 @@
     <BookCard
       v-for="book in books"
       :key="book.title"
+      :book-id="book.id"
       :title="book.title"
       :description="book.description"
       :cover="book.cover"
