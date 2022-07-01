@@ -1,6 +1,8 @@
 <template>
-  <div v-if="user">
-    <h3 class="p-8 text-3xl font-bold font-mono">{{ book.title }} profile</h3>
+  <div v-if="book && book.author">
+    <h3 class="p-8 text-3xl font-bold font-mono">
+      {{ book.title }} by {{ book.author.name }}
+    </h3>
   </div>
 </template>
 
