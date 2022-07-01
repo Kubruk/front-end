@@ -29,15 +29,18 @@
 </template>
 
 <script setup>
-import FormCard from '@components/FormCard.vue';
-import FormInput from '@components/FormInput.vue';
-import Button from '@components/Button.vue';
 import axios from 'axios';
-import { reactive, ref } from 'vue';
+import { reactive, defineAsyncComponent } from 'vue';
 import { storeToRefs } from 'pinia';
 import { userStore } from '@/stores/user';
 import { loadingStore } from '@/stores/loading';
 import { useRouter } from 'vue-router';
+
+const FormCard = defineAsyncComponent(() => import('@components/FormCard.vue'));
+const FormInput = defineAsyncComponent(() =>
+  import('@components/FormInput.vue')
+);
+const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 
 const form = reactive({
   email: '',

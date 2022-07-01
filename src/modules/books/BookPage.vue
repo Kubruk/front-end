@@ -7,10 +7,13 @@
 </template>
 
 <script setup>
-import BookShelf from '@components/Bookshelf.vue';
 import { ref, onBeforeMount } from 'vue';
 import { loadingStore } from '@/stores/loading';
 import axios from 'axios';
+
+const BookShelf = defineAsyncComponent(() =>
+  import('@components/Bookshelf.vue')
+);
 
 const props = defineProps({
   id: {

@@ -27,9 +27,10 @@
 
 <script setup>
 import KubrukLogo from '@assets/book-svgrepo-com.svg';
-import Button from '@components/Button.vue';
 import { storeToRefs } from 'pinia';
 import { userStore } from '@/stores/user';
+
+const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 
 const userSt = userStore();
 const { isLogged, user } = storeToRefs(userSt);

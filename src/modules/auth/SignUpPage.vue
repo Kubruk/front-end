@@ -34,13 +34,16 @@
 </template>
 
 <script setup>
-import FormCard from '@components/FormCard.vue';
-import FormInput from '@components/FormInput.vue';
-import Button from '@components/Button.vue';
 import axios from 'axios';
 import { reactive } from 'vue';
 import { storeToRefs } from 'pinia';
 import { loadingStore } from '@/stores/loading';
+
+const FormCard = defineAsyncComponent(() => import('@components/FormCard.vue'));
+const FormInput = defineAsyncComponent(() =>
+  import('@components/FormInput.vue')
+);
+const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 
 const loading = loadingStore();
 const { isLoading } = storeToRefs(loading);

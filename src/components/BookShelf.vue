@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import BookCard from '@components/BookCard.vue';
+const BookCard = defineAsyncComponent(() => import('@components/BookCard.vue'));
 
 export default {
   name: 'BookShelf',

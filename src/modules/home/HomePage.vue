@@ -5,10 +5,13 @@
 </template>
 
 <script setup>
-import BookShelf from '@components/Bookshelf.vue';
 import axios from 'axios';
 import { ref, onBeforeMount } from 'vue';
 import { loadingStore } from '@/stores/loading';
+
+const BookShelf = defineAsyncComponent(() =>
+  import('@components/Bookshelf.vue')
+);
 
 const loading = loadingStore();
 
