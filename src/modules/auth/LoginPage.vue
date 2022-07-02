@@ -36,7 +36,7 @@ import { userStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup';
-import api from '../../helpers/api';
+import api from '@helpers/api';
 import { storeToRefs } from 'pinia';
 import { loadingStore } from '@/stores/loading';
 

@@ -3,7 +3,7 @@
     <Form
       :validation-schema="schema"
       class="bg-white rounded-lg w-2/6 p-8 shadow-sm"
-      @submit="signup"
+      @submit="onSignup"
     >
       <h2 class="text-3xl mb-4">Sign up</h2>
       <label class="w-full font-semibold block" for="name">Name</label>
@@ -44,6 +44,7 @@ import { storeToRefs } from 'pinia';
 import { loadingStore } from '@/stores/loading';
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup';
+import api from '@helpers/api';
 
 const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 
@@ -55,21 +56,13 @@ const schema = Yup.object().shape({
 const loading = loadingStore();
 const { isLoading } = storeToRefs(loading);
 
-const signup = async (form) => {
-  loading.setLoading(true);
-
-  try {
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/auth/new`,
-      form
-    );
-    user.onLogin(data.user);
-  } catch (error) {
-    console.error(error);
-  } finally {
-    loading.setLoading(false);
-    router.push({ name: 'home' });
-  }
+const onSignup = async (form) => {
+  await api.post('/auth/new', form, {
+    onSuccess: (data) => {
+      user.onLogin(data.user);
+      router.push({ name: 'home' });
+    }
+  });
 };
 </script>
 

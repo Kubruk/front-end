@@ -17,7 +17,8 @@ export default defineConfig({
       '@users': path.resolve(__dirname, './src/modules/users'),
       '@books': path.resolve(__dirname, './src/modules/books'),
       '@assets': path.resolve(__dirname, './src/assets'),
-      '@components': path.resolve(__dirname, './src/components')
+      '@components': path.resolve(__dirname, './src/components'),
+      '@helpers': path.resolve(__dirname, './src/helpers')
     }
   },
   plugins: [vue(), svgLoader()]
