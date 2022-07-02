@@ -10,40 +10,39 @@
       :placeholder="placeholder"
       @input="onChanged"
     />
+    <span>{{ errorMessage }}</span>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    label: {
-      type: String,
-      default: ''
-    },
-    type: {
-      type: String,
-      default: 'text'
-    },
-    name: {
-      type: String,
-      default: null
-    },
-    placeholder: {
-      type: String,
-      default: null
-    }
+<script setup>
+import { ref } from 'vue';
+import { useField } from 'vee-validate';
+import * as yup from 'yup';
+
+const props = defineProps({
+  label: {
+    type: String,
+    default: ''
   },
-  emits: ['update:modelValue'],
-  data() {
-    return {
-      value: ''
-    };
+  type: {
+    type: String,
+    default: 'text'
   },
-  methods: {
-    onChanged(e) {
-      this.$emit('update:modelValue', e.currentTarget.value);
-    }
+  name: {
+    type: String,
+    default: null
+  },
+  placeholder: {
+    type: String,
+    default: null
   }
+});
+
+const value = ref('');
+const emit = defineEmits(['update:modelValue']);
+
+const onChanged = (e) => {
+  emit('update:modelValue', e.currentTarget.value);
 };
 </script>
 

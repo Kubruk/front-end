@@ -1,30 +1,15 @@
 <template>
   <main class="main-page flex items-center justify-center">
-    <FormCard title="Login" :on-submit="login">
-      <template #content>
-        <FormInput
-          label="email"
-          name="email"
-          type="email"
-          @update:model-value="(val) => (form.email = val)"
-        />
-        <FormInput
-          label="password"
-          name="password"
-          type="password"
-          @update:model-value="(val) => (form.password = val)"
-        />
-      </template>
-      <template #footer>
-        <Button
-          primary
-          :disabled="isLoading"
-          type="submit"
-          class="ml-4"
-          name="Login"
-        />
-      </template>
-    </FormCard>
+    <Form :validation-schema="schema" @submit="onSubmit">
+      <label for="email">Email</label>
+      <Field id="email" name="email" type="email" />
+      <ErrorMessage name="email" />
+
+      <label for="password">Password</label>
+      <Field id="password" name="password" type="password" />
+      <ErrorMessage name="password" />
+      <Button primary :disabled="isLoading" class="ml-4" name="Login" />
+    </Form>
   </main>
 </template>
 
@@ -35,16 +20,15 @@ import { storeToRefs } from 'pinia';
 import { userStore } from '@/stores/user';
 import { loadingStore } from '@/stores/loading';
 import { useRouter } from 'vue-router';
+import { Field, Form, ErrorMessage } from 'vee-validate';
+import * as Yup from 'yup';
 
-const FormCard = defineAsyncComponent(() => import('@components/FormCard.vue'));
-const FormInput = defineAsyncComponent(() =>
-  import('@components/FormInput.vue')
-);
 const Button = defineAsyncComponent(() => import('@components/Button.vue'));
+const FormCard = defineAsyncComponent(() => import('@components/FormCard.vue'));
 
-const form = reactive({
-  email: '',
-  password: ''
+const schema = Yup.object().shape({
+  email: Yup.string().email().required().label('Email Address'),
+  password: Yup.string().min(5).required().label('Your Password')
 });
 
 const loading = loadingStore();
@@ -52,9 +36,10 @@ const { isLoading } = storeToRefs(loading);
 const user = userStore();
 const router = useRouter();
 
-const login = async () => {
+const onSubmit = async (form) => {
   loading.setLoading(true);
 
+  console.log(form);
   try {
     const { data } = await axios.post(
       `${import.meta.env.VITE_API_URL}/auth`,
