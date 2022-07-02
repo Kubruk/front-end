@@ -14,6 +14,9 @@ module.exports = {
         sunglow: '#ffc62c',
         'buddha-gold': '#c59000',
         trout: '#505762'
+      },
+      fontFamily: {
+        bebas: 'Bebas Neue'
       }
     }
   },
