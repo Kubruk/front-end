@@ -1,14 +1,31 @@
 <template>
   <main class="main-page flex items-center justify-center">
-    <Form :validation-schema="schema" @submit="onSubmit">
-      <label for="email">Email</label>
-      <Field id="email" name="email" type="email" />
+    <Form
+      :validation-schema="schema"
+      class="bg-white rounded-lg w-2/6 p-8 shadow-sm"
+      @submit="onSubmit"
+    >
+      <h2 class="text-3xl mb-4">Login</h2>
+      <label class="w-full font-semibold block" for="email">Email</label>
+      <Field
+        id="email"
+        class="block w-full border border-alabaster-500 border-solid p-1"
+        name="email"
+        type="email"
+      />
       <ErrorMessage name="email" />
 
-      <label for="password">Password</label>
-      <Field id="password" name="password" type="password" />
+      <label class="w-full font-semibold block" for="password">Password</label>
+      <Field
+        id="password"
+        class="block w-full border border-alabaster-500 border-solid p-1"
+        name="password"
+        type="password"
+      />
       <ErrorMessage name="password" />
-      <Button primary :disabled="isLoading" class="ml-4" name="Login" />
+      <div class="flex justify-end pt-4">
+        <Button primary :disabled="isLoading" class="ml-4" name="Login" />
+      </div>
     </Form>
   </main>
 </template>
@@ -39,7 +56,6 @@ const router = useRouter();
 const onSubmit = async (form) => {
   loading.setLoading(true);
 
-  console.log(form);
   try {
     const { data } = await axios.post(
       `${import.meta.env.VITE_API_URL}/auth`,
