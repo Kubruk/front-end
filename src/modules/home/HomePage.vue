@@ -6,7 +6,7 @@
 
 <script setup>
 import axios from 'axios';
-import { ref, onBeforeMount } from 'vue';
+import { ref, onBeforeMount, defineAsyncComponent } from 'vue';
 import { loadingStore } from '@/stores/loading';
 
 const BookShelf = defineAsyncComponent(() =>

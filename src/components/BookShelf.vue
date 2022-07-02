@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue';
+
 const BookCard = defineAsyncComponent(() => import('@components/BookCard.vue'));
 
 export default {

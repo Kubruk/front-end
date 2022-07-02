@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { ref, onBeforeMount } from 'vue';
+import { ref, onBeforeMount, defineAsyncComponent } from 'vue';
 import { loadingStore } from '@/stores/loading';
 import axios from 'axios';
 

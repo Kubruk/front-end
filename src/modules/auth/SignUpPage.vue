@@ -35,7 +35,7 @@
 
 <script setup>
 import axios from 'axios';
-import { reactive } from 'vue';
+import { reactive, defineAsyncComponent } from 'vue';
 import { storeToRefs } from 'pinia';
 import { loadingStore } from '@/stores/loading';
 
