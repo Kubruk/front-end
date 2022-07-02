@@ -38,8 +38,7 @@
 </template>
 
 <script setup>
-import axios from 'axios';
-import { reactive, defineAsyncComponent } from 'vue';
+import { defineAsyncComponent } from 'vue';
 import { storeToRefs } from 'pinia';
 import { loadingStore } from '@/stores/loading';
 import { Field, Form, ErrorMessage } from 'vee-validate';

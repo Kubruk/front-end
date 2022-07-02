@@ -7,8 +7,7 @@
 
 <script setup>
 import { ref, onBeforeMount, defineAsyncComponent } from 'vue';
-import { loadingStore } from '@/stores/loading';
-import axios from 'axios';
+import api from '@helpers/api';
 
 const BookShelf = defineAsyncComponent(() =>
   import('@components/Bookshelf.vue')
@@ -20,25 +19,17 @@ const props = defineProps({
     default: ''
   }
 });
-const loading = loadingStore();
 
 const user = ref(null);
 const books = ref([]);
 
 onBeforeMount(async () => {
-  loading.setLoading(true);
-
-  try {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/users/${props.id}`
-    );
-    user.value = data.user;
-    books.value = data.books;
-  } catch (error) {
-    console.error(error);
-  } finally {
-    loading.setLoading(false);
-  }
+  await api.get(`/users/${props.id}`, {
+    onSuccess: (data) => {
+      user.value = data.user;
+      books.value = data.books;
+    }
+  });
 });
 </script>
 

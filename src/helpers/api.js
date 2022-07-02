@@ -1,9 +1,7 @@
 import axios from 'axios';
-import { storeToRefs } from 'pinia';
 import { loadingStore } from '@/stores/loading';
 
 const loading = loadingStore();
-const { isLoading } = storeToRefs(loading);
 
 class Api {
   baseUrl = `${import.meta.env.VITE_API_URL}`;
