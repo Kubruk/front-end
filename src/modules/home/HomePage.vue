@@ -31,6 +31,4 @@ onBeforeMount(async () => {
 });
 </script>
 
-<style lang="scss" scoped>
-@use '@styles/home/home.module.scss';
-</style>
+<style lang="scss" scoped></style>

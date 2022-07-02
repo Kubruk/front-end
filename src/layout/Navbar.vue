@@ -37,6 +37,4 @@ const userSt = userStore();
 const { isLogged, user } = storeToRefs(userSt);
 </script>
 
-<style lang="scss" scoped>
-@use '@styles/layout/side-bar.module.scss';
-</style>
+<style lang="scss" scoped></style>
