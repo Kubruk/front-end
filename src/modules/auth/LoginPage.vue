@@ -31,14 +31,14 @@
 </template>
 
 <script setup>
-import axios from 'axios';
-import { reactive, defineAsyncComponent } from 'vue';
-import { storeToRefs } from 'pinia';
+import { defineAsyncComponent } from 'vue';
 import { userStore } from '@/stores/user';
-import { loadingStore } from '@/stores/loading';
 import { useRouter } from 'vue-router';
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup';
+import api from '../../helpers/api';
+import { storeToRefs } from 'pinia';
+import { loadingStore } from '@/stores/loading';
 
 const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 const FormCard = defineAsyncComponent(() => import('@components/FormCard.vue'));
@@ -54,20 +54,12 @@ const user = userStore();
 const router = useRouter();
 
 const onSubmit = async (form) => {
-  loading.setLoading(true);
-
-  try {
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/auth`,
-      form
-    );
-    user.onLogin(data.user);
-  } catch (error) {
-    console.error(error);
-  } finally {
-    loading.setLoading(false);
-    router.push({ name: 'home' });
-  }
+  await api.post('/auth', form, {
+    onSuccess: (data) => {
+      user.onLogin(data.user);
+      router.push({ name: 'home' });
+    }
+  });
 };
 </script>
 

@@ -4,7 +4,15 @@ import { users } from './users';
 import { books } from './books';
 
 const routes = [
-  { name: 'home', path: '/', component: () => import('@home/HomePage.vue') },
+  {
+    name: 'home',
+    path: '/',
+    component: () => import('@home/HomePage.vue'),
+    beforeEnter: (to, from) => {
+      // reject the navigation
+      return false;
+    }
+  },
   ...auth,
   ...users,
   ...books
