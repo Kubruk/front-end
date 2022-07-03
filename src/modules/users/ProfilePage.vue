@@ -1,6 +1,8 @@
 <template>
   <div v-if="user">
-    <h3 class="p-8 text-3xl font-bold font-mono">{{ user.name }} profile</h3>
+    <h3 class="p-8 text-3xl font-bold font-mono">
+      {{ $t('user.profileTitle', { msg: user.name }) }}
+    </h3>
     <BookShelf :books="books" />
   </div>
 </template>

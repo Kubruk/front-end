@@ -25,7 +25,7 @@
       v-if="author"
       class="text-3xl p-4 bg-bright-gray text-alabaster-400 text-ellipsis break-all whitespace-nowrap overflow-hidden"
     >
-      <router-link :to="`/users/${author._id}`">
+      <router-link :to="`/user/profile/${author._id}`">
         {{ author.name }}
       </router-link>
     </div>

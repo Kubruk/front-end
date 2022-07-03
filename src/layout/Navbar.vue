@@ -4,21 +4,23 @@
       <li class="py-1 px-5 flex justify-between items-center">
         <KubrukLogo class="w-[50px] h-[50px] inline-block" />
         <router-link to="/">
-          <h1 class="font-bebas ml-2 mb-[-0.4rem] text-5xl">Kubruk</h1>
+          <h1 class="font-bebas ml-2 mb-[-0.4rem] text-5xl">
+            {{ $t('common.kubruk') }}
+          </h1>
         </router-link>
       </li>
       <li v-if="isLogged" class="py-1 px-5 flex justify-between items-center">
-        <Button name="Logout" />
+        <Button :name="$t('auth.logout')" />
         <router-link :to="`/user/profile/${user.uid}`">
-          <Button class="ml-4" name="Profile" cta />
+          <Button class="ml-4" :name="$t('user.profile')" cta />
         </router-link>
       </li>
       <li v-else class="py-1 px-5 flex justify-between items-center">
         <router-link to="/auth/login">
-          <Button name="Login" />
+          <Button :name="$t('auth.login')" />
         </router-link>
         <router-link to="/auth/sign-up">
-          <Button class="ml-4" name="Sign up" cta />
+          <Button class="ml-4" :name="$t('auth.signUp')" cta />
         </router-link>
       </li>
     </ul>

@@ -6,14 +6,18 @@
       @submit="onSignup"
     >
       <h2 class="text-3xl mb-4">Sign up</h2>
-      <label class="w-full font-semibold block" for="name">Name</label>
+      <label class="w-full font-semibold block" for="name">{{
+        $t('user.name')
+      }}</label>
       <Field
         id="name"
         class="block w-full border border-alabaster-500 border-solid p-1"
         name="name"
         type="text"
       />
-      <label class="w-full font-semibold block" for="email">Email</label>
+      <label class="w-full font-semibold block" for="email">{{
+        $t('auth.email')
+      }}</label>
       <Field
         id="email"
         class="block w-full border border-alabaster-500 border-solid p-1"
@@ -22,7 +26,9 @@
       />
       <ErrorMessage name="email" />
 
-      <label class="w-full font-semibold block" for="password">Password</label>
+      <label class="w-full font-semibold block" for="password">{{
+        $t('auth.password')
+      }}</label>
       <Field
         id="password"
         class="block w-full border border-alabaster-500 border-solid p-1"
@@ -31,7 +37,12 @@
       />
       <ErrorMessage name="password" />
       <div class="flex justify-end pt-4">
-        <Button primary :disabled="isLoading" class="ml-4" name="Sign up" />
+        <Button
+          primary
+          :disabled="isLoading"
+          class="ml-4"
+          :name="$t('auth.signUp')"
+        />
       </div>
     </Form>
   </main>
@@ -44,12 +55,14 @@ import { loadingStore } from '@/stores/loading';
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup';
 import api from '@helpers/api';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
 
 const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 
 const schema = Yup.object().shape({
-  email: Yup.string().email().required().label('Email Address'),
-  password: Yup.string().min(5).required().label('Your Password')
+  email: Yup.string().email().required().label(t('auth.email')),
+  password: Yup.string().min(5).required().label(t('auth.password'))
 });
 
 const loading = loadingStore();
