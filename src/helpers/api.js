@@ -4,13 +4,21 @@ import { loadingStore } from '@/stores/loading';
 const loading = loadingStore();
 
 class Api {
-  baseUrl = `${import.meta.env.VITE_API_URL}`;
+  constructor() {
+    this.client = null;
+  }
+
+  initAxios() {
+    this.client = axios.create({
+      baseURL: `${import.meta.env.VITE_API_URL}`
+    });
+  }
 
   async get(url, { onSuccess, onError }) {
     loading.setLoading(true);
 
     try {
-      const { data } = await axios.get(`${this.baseUrl}${url}`);
+      const { data } = await this.client.get(url);
       if (onSuccess) onSuccess(data);
       return data;
     } catch (error) {
@@ -25,7 +33,7 @@ class Api {
     loading.setLoading(true);
 
     try {
-      const { data } = await axios.post(`${this.baseUrl}${url}`, payload);
+      const { data } = await this.client.post(url, payload);
       if (onSuccess) onSuccess(data);
       return data;
     } catch (error) {
@@ -37,4 +45,8 @@ class Api {
   }
 }
 
-export default new Api();
+const api = new Api();
+
+api.initAxios();
+
+export default api;

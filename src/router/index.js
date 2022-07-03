@@ -8,9 +8,9 @@ const routes = [
     name: 'home',
     path: '/',
     component: () => import('@home/HomePage.vue'),
-    beforeEnter: (to, from) => {
+    beforeEnter: (to, from, next) => {
       // reject the navigation
-      return false;
+      next();
     }
   },
   ...auth,

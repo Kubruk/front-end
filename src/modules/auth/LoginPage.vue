@@ -24,7 +24,12 @@
       />
       <ErrorMessage name="password" />
       <div class="flex justify-end pt-4">
-        <Button primary :disabled="isLoading" class="ml-4" name="Login" />
+        <Button
+          primary
+          :disabled="isLoading"
+          class="ml-4"
+          :name="$t('auth.login')"
+        />
       </div>
     </Form>
   </main>
@@ -57,7 +62,7 @@ const onSubmit = async (form) => {
   await api.post('/auth', form, {
     onSuccess: (data) => {
       user.onLogin(data.user);
-      router.push({ name: 'home' });
+      router.push({ path: '/' });
     }
   });
 };

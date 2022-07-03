@@ -59,7 +59,7 @@ const onSignup = async (form) => {
   await api.post('/auth/new', form, {
     onSuccess: (data) => {
       user.onLogin(data.user);
-      router.push({ name: 'home' });
+      router.push({ path: '/' });
     }
   });
 };

@@ -2,7 +2,7 @@
   <button
     :disabled="disabled"
     :type="type"
-    class="px-4 py-2 font-semibold rounded-md"
+    class="px-4 py-2 font-semibold rounded-md disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
     :class="classes"
   >
     {{ name }}
