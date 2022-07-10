@@ -52,6 +52,7 @@
 import { defineAsyncComponent } from 'vue';
 import { storeToRefs } from 'pinia';
 import { loadingStore } from '@/stores/loading';
+import { userStore } from '@/stores/user';
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup';
 import api from '@helpers/api';
@@ -67,11 +68,12 @@ const schema = Yup.object().shape({
 
 const loading = loadingStore();
 const { isLoading } = storeToRefs(loading);
+const { onLogin } = userStore();
 
 const onSignup = async (form) => {
   await api.post('/auth/new', form, {
     onSuccess: (data) => {
-      user.onLogin(data.user);
+      onLogin(data.user);
       router.push({ path: '/' });
     }
   });

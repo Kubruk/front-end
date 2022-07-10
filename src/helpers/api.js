@@ -1,8 +1,4 @@
 import axios from 'axios';
-import { loadingStore } from '@/stores/loading';
-
-const loading = loadingStore();
-
 class Api {
   constructor() {
     this.client = null;
@@ -11,6 +7,13 @@ class Api {
   initAxios() {
     this.client = axios.create({
       baseURL: `${import.meta.env.VITE_API_URL}`
+    });
+    this.client.interceptors.request.use((config) => {
+      config.headers = {
+        ...config.headers,
+        'x-token': localStorage.getItem('token')
+      };
+      return config;
     });
   }
 

@@ -61,13 +61,13 @@ const schema = Yup.object().shape({
 
 const loading = loadingStore();
 const { isLoading } = storeToRefs(loading);
-const user = userStore();
+const { onLogin } = userStore();
 const router = useRouter();
 
 const onSubmit = async (form) => {
   await api.post('/auth', form, {
     onSuccess: (data) => {
-      user.onLogin(data.user);
+      onLogin(data.user);
       router.push({ path: '/' });
     }
   });

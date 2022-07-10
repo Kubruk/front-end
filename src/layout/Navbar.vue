@@ -10,7 +10,7 @@
         </router-link>
       </li>
       <li v-if="isLogged" class="py-1 px-5 flex justify-between items-center">
-        <Button :name="$t('auth.logout')" />
+        <Button :name="$t('auth.logout')" :on-click="onLogout" />
         <router-link :to="`/user/profile/${user.uid}`">
           <Button class="ml-4" :name="$t('user.profile')" cta />
         </router-link>
@@ -31,12 +31,20 @@
 import KubrukLogo from '@assets/book-svgrepo-com.svg';
 import { storeToRefs } from 'pinia';
 import { userStore } from '@/stores/user';
+import { loadingStore } from '@/stores/loading';
 import { defineAsyncComponent } from 'vue';
 
 const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 
 const userSt = userStore();
 const { isLogged, user } = storeToRefs(userSt);
+const loading = loadingStore();
+
+const onLogout = () => {
+  loading.setLoading(true);
+  userSt.onLogout();
+  loading.setLoading(false);
+};
 </script>
 
 <style lang="scss" scoped></style>
