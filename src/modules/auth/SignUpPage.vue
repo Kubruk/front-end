@@ -57,6 +57,8 @@ import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup';
 import api from '@helpers/api';
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
+
 const { t } = useI18n();
 
 const Button = defineAsyncComponent(() => import('@components/Button.vue'));
@@ -69,6 +71,7 @@ const schema = Yup.object().shape({
 const loading = loadingStore();
 const { isLoading } = storeToRefs(loading);
 const { onLogin } = userStore();
+const router = useRouter();
 
 const onSignup = async (form) => {
   const loadingStatus = 'sign-up';

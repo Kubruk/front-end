@@ -21,6 +21,7 @@ export const userStore = defineStore('user', {
     },
     onLogout() {
       this.user = {};
+      localStorage.clear();
       this.setLogged(false);
     },
     async checkAuthToken() {
@@ -43,7 +44,6 @@ export const userStore = defineStore('user', {
           this.onLogin(loginData);
         },
         onError: () => {
-          localStorage.clear();
           this.onLogout();
         }
       });
