@@ -9,6 +9,9 @@
 <script setup>
 import { ref, onBeforeMount, defineAsyncComponent } from 'vue';
 import api from '@helpers/api';
+import { loadingStore } from '@/stores/loading';
+
+const loading = loadingStore();
 
 const BookShelf = defineAsyncComponent(() =>
   import('@components/Bookshelf.vue')
@@ -24,11 +27,14 @@ const props = defineProps({
 const book = ref([]);
 
 onBeforeMount(async () => {
+  const loadingStatus = 'get-book';
+  loading.setLoading(loadingStatus);
   await api.get(`/books/${props.id}`, {
     onSuccess: (data) => {
       book.value = data.book;
     }
   });
+  loading.unsetLoading(loadingStatus);
 });
 </script>
 

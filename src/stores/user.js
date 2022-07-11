@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { loadingStore } from '@/stores/loading';
-import axios from 'axios';
+import api from '@helpers/api';
 
 export const userStore = defineStore('user', {
   state: () => ({
@@ -24,27 +24,30 @@ export const userStore = defineStore('user', {
       this.setLogged(false);
     },
     async checkAuthToken() {
+      const loadingStatus = 'check-token';
       const loading = loadingStore();
-      loading.setLoading(true);
+      loading.setLoading(loadingStatus);
       const token = localStorage.getItem('token');
 
-      if (!token) return this.onLogout();
-
-      try {
-        const { data } = await axios.get('/auth/renew');
-        const loginData = {
-          name: data.name,
-          uid: data.uid,
-          token: data.token
-        };
-        this.onLogin(loginData);
-      } catch (error) {
-        localStorage.clear();
-        this.onLogout();
-        console.error(error);
-      } finally {
-        loading.setLoading(false);
+      if (!token) {
+        loading.unsetLoading(loadingStatus);
+        return this.onLogout();
       }
+
+      await api.get('/auth/renew', {
+        onSuccess: (data) => {
+          const loginData = {
+            ...data.user,
+            token: data.token
+          };
+          this.onLogin(loginData);
+        },
+        onError: () => {
+          localStorage.clear();
+          this.onLogout();
+        }
+      });
+      loading.unsetLoading(loadingStatus);
     }
   }
 });

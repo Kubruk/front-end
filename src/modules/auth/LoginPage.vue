@@ -65,12 +65,15 @@ const { onLogin } = userStore();
 const router = useRouter();
 
 const onSubmit = async (form) => {
+  const loadingStatus = 'login';
+  loading.setLoading(loadingStatus);
   await api.post('/auth', form, {
     onSuccess: (data) => {
       onLogin(data.user);
       router.push({ path: '/' });
     }
   });
+  loading.unsetLoading(loadingStatus);
 };
 </script>
 

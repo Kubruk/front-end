@@ -41,9 +41,10 @@ const { isLogged, user } = storeToRefs(userSt);
 const loading = loadingStore();
 
 const onLogout = () => {
-  loading.setLoading(true);
+  const loadingStatus = 'Logout';
+  loading.setLoading(loadingStatus);
   userSt.onLogout();
-  loading.setLoading(false);
+  loading.unsetLoading(loadingStatus);
 };
 </script>
 

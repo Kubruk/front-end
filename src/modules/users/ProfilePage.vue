@@ -10,6 +10,9 @@
 <script setup>
 import { ref, onBeforeMount, defineAsyncComponent } from 'vue';
 import api from '@helpers/api';
+import { loadingStore } from '@/stores/loading';
+
+const loading = loadingStore();
 
 const BookShelf = defineAsyncComponent(() =>
   import('@components/Bookshelf.vue')
@@ -26,12 +29,15 @@ const user = ref(null);
 const books = ref([]);
 
 onBeforeMount(async () => {
+  const loadingStatus = 'get-user-profile';
+  loading.setLoading(loadingStatus);
   await api.get(`/users/${props.id}`, {
     onSuccess: (data) => {
       user.value = data.user;
       books.value = data.books;
     }
   });
+  loading.unsetLoading(loadingStatus);
 });
 </script>
 

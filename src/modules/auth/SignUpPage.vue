@@ -71,12 +71,15 @@ const { isLoading } = storeToRefs(loading);
 const { onLogin } = userStore();
 
 const onSignup = async (form) => {
+  const loadingStatus = 'sign-up';
+  loading.setLoading(loadingStatus);
   await api.post('/auth/new', form, {
     onSuccess: (data) => {
       onLogin(data.user);
       router.push({ path: '/' });
     }
   });
+  loading.unsetLoading(loadingStatus);
 };
 </script>
 

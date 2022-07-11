@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 class Api {
   constructor() {
     this.client = null;
@@ -17,9 +18,7 @@ class Api {
     });
   }
 
-  async get(url, { onSuccess, onError }) {
-    loading.setLoading(true);
-
+  async get(url, { onSuccess = null, onError = null }) {
     try {
       const { data } = await this.client.get(url);
       if (onSuccess) onSuccess(data);
@@ -27,14 +26,10 @@ class Api {
     } catch (error) {
       console.error(error);
       if (onError) onError();
-    } finally {
-      loading.setLoading(false);
     }
   }
 
-  async post(url, payload, { onSuccess, onError }) {
-    loading.setLoading(true);
-
+  async post(url, payload, { onSuccess = null, onError = null }) {
     try {
       const { data } = await this.client.post(url, payload);
       if (onSuccess) onSuccess(data);
@@ -42,8 +37,6 @@ class Api {
     } catch (error) {
       console.error(error);
       if (onError) onError();
-    } finally {
-      loading.setLoading(false);
     }
   }
 }
