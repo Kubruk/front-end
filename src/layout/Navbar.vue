@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-bright-gray text-alabaster-400 p-2">
+  <nav class="navbar bg-bright-gray text-alabaster-400 p-2">
     <ul class="flex justify-between items-center">
       <li class="py-1 px-5 flex justify-between items-center">
         <KubrukLogo class="w-[50px] h-[50px] inline-block" />

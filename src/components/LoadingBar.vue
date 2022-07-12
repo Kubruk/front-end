@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <div
-      v-if="isLoading"
-      style="width: 100%"
-      class="absolute top-0 h-4 shim-green"
-    />
-    <div v-else class="absolute top-0 h-4" />
+  <div class="relative">
+    <div class="absolute top-0 w-full">
+      <div v-if="isLoading" style="width: 100%" class="h-4 shim-green" />
+      <div v-else class="h-4" />
+    </div>
   </div>
 </template>
 
