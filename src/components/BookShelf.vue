@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="books"
-    class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 md:grid-rows-2 p-8"
+    class="w-5/6 grid grid-cols-1 gap-6 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 p-8"
   >
     <BookCard
       v-for="book in books"

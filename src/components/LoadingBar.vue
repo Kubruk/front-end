@@ -5,7 +5,7 @@
       style="width: 100%"
       class="absolute top-0 h-4 shim-green"
     />
-    <div v-else class="h-4" />
+    <div v-else class="absolute top-0 h-4" />
   </div>
 </template>
 
