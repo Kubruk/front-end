@@ -1,5 +1,8 @@
 <template>
   <div>
+    <h3 class="p-8 text-3xl font-bold font-mono">
+      {{ $t('user.bruksTitle', { msg: user.name }) }}
+    </h3>
     <BookShelf v-if="books.length" :books="books" />
     <span v-else>{{ $t('user.bruks.noBruks') }}</span>
   </div>
@@ -23,7 +26,7 @@ const props = defineProps({
 });
 
 const userSt = userStore();
-const { books } = storeToRefs(userSt);
+const { books, user } = storeToRefs(userSt);
 
 onBeforeMount(async () => {
   userSt.getBooks();

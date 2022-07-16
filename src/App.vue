@@ -4,7 +4,9 @@
     <LoadingBar />
     <main class="main-page md:flex items-stretch">
       <SideBar />
-      <router-view />
+      <section class="w-5/6">
+        <router-view />
+      </section>
     </main>
   </div>
 </template>

@@ -3,7 +3,9 @@ export const es = {
     kubruk: 'Kubruk'
   },
   menu: {
-    dashboard: 'Dashboard'
+    dashboard: 'Dashboard',
+    bruks: 'Bruks',
+    profile: 'Perfil'
   },
   auth: {
     login: 'Conectarse',
@@ -16,6 +18,7 @@ export const es = {
   user: {
     profile: 'Perfil',
     profileTitle: 'Perfil de {msg}',
+    bruksTitle: 'Bruks de {msg}',
     name: 'Nombre',
     bruks: {
       noBruks: 'Aún no tienes ningún bruk'

@@ -55,7 +55,7 @@ export const userStore = defineStore('user', {
       const loadingStatus = 'get-user-bruks';
       const loading = loadingStore();
       loading.setLoading(loadingStatus);
-      await api.get(`/users/${this.user.uid}`, {
+      await api.get(`/users/${this.user.uid}/books`, {
         onSuccess: (data) => {
           this.books = data.books;
         }
