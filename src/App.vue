@@ -2,13 +2,20 @@
   <div class="min-h-screen min-w-screen bg-alabaster-400">
     <NavBar />
     <LoadingBar />
-    <router-view />
+    <main class="main-page md:flex items-stretch">
+      <SideBar />
+      <router-view />
+    </main>
   </div>
 </template>
 
 <script setup>
-import NavBar from '@layout/NavBar.vue';
-import LoadingBar from '@components/LoadingBar.vue';
+import { defineAsyncComponent } from 'vue';
+const NavBar = defineAsyncComponent(() => import('@layout/NavBar.vue'));
+const LoadingBar = defineAsyncComponent(() =>
+  import('@components/LoadingBar.vue')
+);
+const SideBar = defineAsyncComponent(() => import('@layout/SideBar.vue'));
 </script>
 
 <style lang="scss">

@@ -1,5 +1,5 @@
 <template>
-  <main class="main-page flex items-center justify-center">
+  <main class="flex items-center justify-center w-full">
     <Form
       :validation-schema="schema"
       class="bg-white rounded-lg w-2/6 p-8 shadow-sm"

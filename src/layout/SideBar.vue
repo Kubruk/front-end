@@ -1,13 +1,7 @@
 <template>
-  <div class="p-4 bg-white w-1/6">
-    <span v-if="isLogged">{{ user.name }}</span>
-  </div>
+  <div class="p-4 bg-white w-1/6">Link 1 Link 2</div>
 </template>
 
-<script setup>
-import { userStore } from '@/stores/user';
-
-const { user, isLogged } = userStore();
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>

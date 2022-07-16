@@ -1,5 +1,5 @@
 <template>
-  <main class="main-page flex items-center justify-center">
+  <main class="flex items-center justify-center w-full">
     <Form
       :validation-schema="schema"
       class="bg-white rounded-lg w-2/6 p-8 shadow-sm"
@@ -15,6 +15,7 @@
         name="name"
         type="text"
       />
+      <ErrorMessage name="name" />
       <label class="w-full font-semibold block" for="email">{{
         $t('auth.email')
       }}</label>
@@ -64,6 +65,7 @@ const { t } = useI18n();
 const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 
 const schema = Yup.object().shape({
+  name: Yup.string().required().label(t('auth.name')),
   email: Yup.string().email().required().label(t('auth.email')),
   password: Yup.string().min(5).required().label(t('auth.password'))
 });

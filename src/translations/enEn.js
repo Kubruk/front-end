@@ -6,6 +6,7 @@ export const en = {
     login: 'Login',
     signUp: 'Sign up',
     logout: 'Logout',
+    name: 'name',
     email: 'Email',
     password: 'Password'
   },

@@ -31,6 +31,7 @@
 import KubrukLogo from '@assets/book-svgrepo-com.svg';
 import { storeToRefs } from 'pinia';
 import { userStore } from '@/stores/user';
+import { useRouter } from 'vue-router';
 import { loadingStore } from '@/stores/loading';
 import { defineAsyncComponent } from 'vue';
 
@@ -39,11 +40,13 @@ const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 const userSt = userStore();
 const { isLogged, user } = storeToRefs(userSt);
 const loading = loadingStore();
+const router = useRouter();
 
 const onLogout = () => {
   const loadingStatus = 'Logout';
   loading.setLoading(loadingStatus);
   userSt.onLogout();
+  router.push({ path: '/' });
   loading.unsetLoading(loadingStatus);
 };
 </script>

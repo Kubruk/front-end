@@ -6,6 +6,7 @@ export const es = {
     login: 'Conectarse',
     signUp: 'Registrarse',
     logout: 'Desconectarse',
+    name: 'nombre',
     email: 'Correo electrónico',
     password: 'Contraseña'
   },

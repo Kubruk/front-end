@@ -1,8 +1,5 @@
 <template>
-  <main class="main-page md:flex items-stretch">
-    <SideBar />
-    <BookShelf :books="books" />
-  </main>
+  <BookShelf :books="books" />
 </template>
 
 <script setup>
@@ -13,7 +10,6 @@ import { loadingStore } from '@/stores/loading';
 const BookShelf = defineAsyncComponent(() =>
   import('@components/Bookshelf.vue')
 );
-const SideBar = defineAsyncComponent(() => import('@layout/SideBar.vue'));
 
 const loading = loadingStore();
 

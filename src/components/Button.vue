@@ -39,10 +39,10 @@ const props = defineProps({
 });
 
 const classes = {
-  'bg-sunglow': props.cta,
-  'text-bright-gray': props.cta,
-  'bg-bright-gray': props.primary,
-  'text-alabaster-400': props.primary
+  'bg-sunglow': !props.disabled && props.cta,
+  'text-bright-gray': !props.disabled && props.cta,
+  'bg-bright-gray': !props.disabled && props.primary,
+  'text-alabaster-400': !props.disabled && props.primary
 };
 </script>
 
