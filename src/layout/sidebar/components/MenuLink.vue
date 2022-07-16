@@ -1,5 +1,7 @@
 <template>
-  <div class="p-4 bg-white w-1/6">Link 1 Link 2</div>
+  <button class="p-2 text-lg font-semibold">
+    <slot />
+  </button>
 </template>
 
 <script setup></script>

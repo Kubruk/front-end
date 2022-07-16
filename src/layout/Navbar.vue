@@ -11,7 +11,7 @@
       </li>
       <li v-if="isLogged" class="py-1 px-5 flex justify-between items-center">
         <Button :name="$t('auth.logout')" :on-click="onLogout" />
-        <router-link :to="`/user/profile/${user.uid}`">
+        <router-link :to="`/user/${user.uid}/profile`">
           <Button class="ml-4" :name="$t('user.profile')" cta />
         </router-link>
       </li>

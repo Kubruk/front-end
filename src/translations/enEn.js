@@ -2,6 +2,9 @@ export const en = {
   common: {
     kubruk: 'Kubruk'
   },
+  menu: {
+    dashboard: 'Dashboard'
+  },
   auth: {
     login: 'Login',
     signUp: 'Sign up',
@@ -13,6 +16,9 @@ export const en = {
   user: {
     profile: 'Profile',
     profileTitle: '{msg} profile',
-    name: 'Name'
+    name: 'Name',
+    bruks: {
+      noBruks: "You doesn't have a bruk yet"
+    }
   }
 };

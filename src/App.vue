@@ -15,7 +15,9 @@ const NavBar = defineAsyncComponent(() => import('@layout/NavBar.vue'));
 const LoadingBar = defineAsyncComponent(() =>
   import('@components/LoadingBar.vue')
 );
-const SideBar = defineAsyncComponent(() => import('@layout/SideBar.vue'));
+const SideBar = defineAsyncComponent(() =>
+  import('@layout/sidebar/SideBar.vue')
+);
 </script>
 
 <style lang="scss">

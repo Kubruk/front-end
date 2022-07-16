@@ -5,7 +5,8 @@ import api from '@helpers/api';
 export const userStore = defineStore('user', {
   state: () => ({
     isLogged: false,
-    user: {}
+    user: {},
+    books: []
   }),
   actions: {
     onLogin({ name, uid, token }) {
@@ -45,6 +46,18 @@ export const userStore = defineStore('user', {
         },
         onError: () => {
           this.onLogout();
+        }
+      });
+      loading.unsetLoading(loadingStatus);
+    },
+    async getBooks() {
+      console.log(this.user);
+      const loadingStatus = 'get-user-bruks';
+      const loading = loadingStore();
+      loading.setLoading(loadingStatus);
+      await api.get(`/users/${this.user.uid}`, {
+        onSuccess: (data) => {
+          this.books = data.books;
         }
       });
       loading.unsetLoading(loadingStatus);
