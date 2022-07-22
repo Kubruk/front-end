@@ -7,11 +7,20 @@
 </template>
 
 <script setup>
-import { storeToRefs } from 'pinia';
 import { userStore } from '@/stores/user';
+import { useRoute } from 'vue-router';
+import { ref, onBeforeMount } from 'vue';
 
+const user = ref({});
+const route = useRoute();
+const userID = route.params.id;
 const userSt = userStore();
-const { user } = storeToRefs(userSt);
+
+onBeforeMount(async () => {
+  const data = await userSt.getUser(userID);
+
+  user.value = data.user;
+});
 </script>
 
 <style lang="scss" scoped></style>

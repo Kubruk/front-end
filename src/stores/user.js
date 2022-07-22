@@ -50,16 +50,25 @@ export const userStore = defineStore('user', {
       });
       loading.unsetLoading(loadingStatus);
     },
+    async getUser(id) {
+      const loadingStatus = 'get-user-profile';
+      const loading = loadingStore();
+      loading.setLoading(loadingStatus);
+
+      const response = await api.get(`/users/${id}`);
+      loading.unsetLoading(loadingStatus);
+
+      return response || {};
+    },
     async getBooks() {
-      console.log(this.user);
       const loadingStatus = 'get-user-bruks';
       const loading = loadingStore();
       loading.setLoading(loadingStatus);
-      await api.get(`/users/${this.user.uid}/books`, {
-        onSuccess: (data) => {
-          this.books = data.books;
-        }
-      });
+
+      const { books } = await this.getUser(this.user.uid);
+
+      this.books = books;
+
       loading.unsetLoading(loadingStatus);
     }
   }

@@ -18,7 +18,7 @@ class Api {
     });
   }
 
-  async get(url, { onSuccess = null, onError = null }) {
+  async get(url, { onSuccess = null, onError = null } = {}) {
     try {
       const { data } = await this.client.get(url);
       if (onSuccess) onSuccess(data);
@@ -29,7 +29,7 @@ class Api {
     }
   }
 
-  async post(url, payload, { onSuccess = null, onError = null }) {
+  async post(url, payload, { onSuccess = null, onError = null } = {}) {
     try {
       const { data } = await this.client.post(url, payload);
       if (onSuccess) onSuccess(data);
