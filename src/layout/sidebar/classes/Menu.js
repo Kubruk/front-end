@@ -5,10 +5,7 @@ class Menu {
   }
 
   getLoggedLinks() {
-    return [
-      { to: `/user/${this.user.uid}/bruks`, name: 'menu.bruks' },
-      { to: `/user/${this.user.uid}/profile`, name: 'menu.profile' }
-    ];
+    return [{ to: `/user/${this.user.uid}/profile`, name: 'menu.profile' }];
   }
 
   build() {

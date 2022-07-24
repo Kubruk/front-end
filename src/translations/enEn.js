@@ -4,8 +4,7 @@ export const en = {
   },
   menu: {
     dashboard: 'Dashboard',
-    bruks: 'Bruks',
-    profile: 'Profile'
+    profile: 'My profile'
   },
   auth: {
     login: 'Login',
@@ -21,6 +20,7 @@ export const en = {
     bruksTitle: '{msg} bruks',
     name: 'Name',
     bruks: {
+      newBruk: 'New Bruk',
       noBruks: "You doesn't have a bruk yet"
     }
   }
