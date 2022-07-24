@@ -1,5 +1,7 @@
 <template>
-  <main class="flex items-center justify-center w-full">
+  <main
+    class="flex items-center justify-center w-full h-[-webkit-fill-available]"
+  >
     <Form
       :validation-schema="schema"
       class="bg-white rounded-lg w-2/6 p-8 shadow-sm"
