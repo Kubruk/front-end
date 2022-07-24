@@ -13,6 +13,7 @@
       }}</label>
       <Field
         id="email"
+        v-model="email"
         class="block w-full border border-alabaster-500 border-solid p-1"
         name="email"
         type="email"
@@ -24,6 +25,7 @@
       }}</label>
       <Field
         id="password"
+        v-model="password"
         class="block w-full border border-alabaster-500 border-solid p-1"
         name="password"
         type="password"
@@ -32,7 +34,7 @@
       <div class="flex justify-end pt-4">
         <Button
           primary
-          :disabled="isLoading"
+          :disabled="isDisabled"
           class="ml-4"
           :name="$t('auth.login')"
         />
@@ -42,7 +44,7 @@
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup';
@@ -54,6 +56,13 @@ const { t } = useI18n();
 
 const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 const FormCard = defineAsyncComponent(() => import('@components/FormCard.vue'));
+
+const email = ref(null);
+const password = ref(null);
+
+const isDisabled = computed(() => {
+  return Boolean(isLoading.value || !email.value || !password.value);
+});
 
 const schema = Yup.object().shape({
   email: Yup.string().email().required().label(t('auth.email')),

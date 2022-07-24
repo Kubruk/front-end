@@ -11,6 +11,8 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
   name: {
     type: String,
@@ -38,12 +40,14 @@ const props = defineProps({
   }
 });
 
-const classes = {
-  'bg-sunglow': !props.disabled && props.cta,
-  'text-bright-gray': !props.disabled && props.cta,
-  'bg-bright-gray': !props.disabled && props.primary,
-  'text-alabaster-400': !props.disabled && props.primary
-};
+const classes = computed(() => {
+  return {
+    'bg-sunglow': !props.disabled && props.cta,
+    'text-bright-gray': !props.disabled && props.cta,
+    'bg-bright-gray': !props.disabled && props.primary,
+    'text-alabaster-400': !props.disabled && props.primary
+  };
+});
 </script>
 
 <style lang="scss" scoped></style>

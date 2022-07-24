@@ -13,6 +13,7 @@
       }}</label>
       <Field
         id="name"
+        v-model="name"
         class="block w-full border border-alabaster-500 border-solid p-1"
         name="name"
         type="text"
@@ -23,6 +24,7 @@
       }}</label>
       <Field
         id="email"
+        v-model="email"
         class="block w-full border border-alabaster-500 border-solid p-1"
         name="email"
         type="email"
@@ -34,6 +36,7 @@
       }}</label>
       <Field
         id="password"
+        v-model="password"
         class="block w-full border border-alabaster-500 border-solid p-1"
         name="password"
         type="password"
@@ -42,7 +45,7 @@
       <div class="flex justify-end pt-4">
         <Button
           primary
-          :disabled="isLoading"
+          :disabled="isDisabled"
           class="ml-4"
           :name="$t('auth.signUp')"
         />
@@ -52,7 +55,7 @@
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, ref, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { loadingStore } from '@/stores/loading';
 import { userStore } from '@/stores/user';
@@ -66,10 +69,20 @@ const { t } = useI18n();
 
 const Button = defineAsyncComponent(() => import('@components/Button.vue'));
 
+const email = ref(null);
+const password = ref(null);
+const name = ref(null);
+
 const schema = Yup.object().shape({
   name: Yup.string().required().label(t('auth.name')),
   email: Yup.string().email().required().label(t('auth.email')),
   password: Yup.string().min(5).required().label(t('auth.password'))
+});
+
+const isDisabled = computed(() => {
+  return Boolean(
+    isLoading.value || !email.value || !password.value || !name.value
+  );
 });
 
 const loading = loadingStore();
