@@ -8,10 +8,7 @@ const routes = [
   {
     name: 'home',
     path: '/',
-    component: () => import('@home/HomePage.vue'),
-    beforeEnter: async (to, from, next) => {
-      next();
-    }
+    component: () => import('@home/HomePage.vue')
   },
   ...auth,
   ...users,

@@ -1,29 +1,20 @@
 <template>
-  <BookShelf :books="books" />
+  <component :is="component" />
 </template>
 
 <script setup>
-import api from '@helpers/api';
-import { ref, onBeforeMount, defineAsyncComponent } from 'vue';
-import { loadingStore } from '@/stores/loading';
+import { storeToRefs } from 'pinia';
+import { userStore } from '@/stores/user';
+import { computed, defineAsyncComponent } from 'vue';
 
-const BookShelf = defineAsyncComponent(() =>
-  import('@components/Bookshelf.vue')
-);
+const DashboardPage = defineAsyncComponent(() => import('./DashboardPage.vue'));
+const LandingPage = defineAsyncComponent(() => import('./LandingPage.vue'));
 
-const loading = loadingStore();
+const userSt = userStore();
+const { isLogged } = storeToRefs(userSt);
 
-const books = ref([]);
-
-onBeforeMount(async () => {
-  const loadingStatus = 'get-books';
-  loading.setLoading(loadingStatus);
-  await api.get('/books', {
-    onSuccess: (data) => {
-      books.value = data.books;
-    }
-  });
-  loading.unsetLoading(loadingStatus);
+const component = computed(() => {
+  return isLogged.value ? DashboardPage : LandingPage;
 });
 </script>
 
