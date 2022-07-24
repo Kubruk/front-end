@@ -8,7 +8,7 @@
         <router-view />
       </section>
     </main>
-    <main class="main-page md:flex items-stretch">
+    <main v-else class="main-page md:flex items-stretch">
       <router-view />
     </main>
   </div>
