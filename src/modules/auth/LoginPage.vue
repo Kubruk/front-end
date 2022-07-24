@@ -43,13 +43,12 @@
 
 <script setup>
 import { defineAsyncComponent } from 'vue';
-import { userStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
 import { Field, Form, ErrorMessage } from 'vee-validate';
 import * as Yup from 'yup';
-import api from '@helpers/api';
 import { storeToRefs } from 'pinia';
 import { loadingStore } from '@/stores/loading';
+import { authStore } from '@/stores/auth';
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 
@@ -61,21 +60,15 @@ const schema = Yup.object().shape({
   password: Yup.string().min(5).required().label(t('auth.password'))
 });
 
+const router = useRouter();
 const loading = loadingStore();
 const { isLoading } = storeToRefs(loading);
-const { onLogin } = userStore();
-const router = useRouter();
+
+const { login } = authStore();
 
 const onSubmit = async (form) => {
-  const loadingStatus = 'login';
-  loading.setLoading(loadingStatus);
-  await api.post('/auth', form, {
-    onSuccess: (data) => {
-      onLogin(data.user);
-      router.push({ path: '/' });
-    }
-  });
-  loading.unsetLoading(loadingStatus);
+  await login(form);
+  router.push({ path: '/' });
 };
 </script>
 
