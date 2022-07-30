@@ -5,20 +5,23 @@
       :primary-action="primaryAction"
     />
     <UserBruks :books="books" />
+    <NewBruk v-if="modal.new" />
   </div>
 </template>
 
 <script setup>
 import { userStore } from '@/stores/user';
 import { useRoute } from 'vue-router';
-import { ref, onBeforeMount, defineAsyncComponent } from 'vue';
+import { ref, onBeforeMount, defineAsyncComponent, reactive } from 'vue';
 import { storeToRefs } from 'pinia';
 import { loadingStore } from '@/stores/loading';
 import { useI18n } from 'vue-i18n';
+
 const Header = defineAsyncComponent(() =>
   import('@components/SectionHeader.vue')
 );
 const UserBruks = defineAsyncComponent(() => import('./bruks/UserBruks.vue'));
+const NewBruk = defineAsyncComponent(() => import('./bruks/NewBruk.vue'));
 const { t } = useI18n();
 
 const loading = loadingStore();
@@ -29,6 +32,9 @@ const books = ref([]);
 const route = useRoute();
 const userID = route.params.id;
 const userSt = userStore();
+const modal = reactive({
+  new: false
+});
 
 const primaryAction = ref(null);
 
@@ -36,13 +42,12 @@ const setPrimaryAction = () => {
   const { user: loggedUser } = storeToRefs(userSt);
   const isLoggedUser = userID === loggedUser.value.uid;
 
-  return (
-    isLoggedUser &&
-    (primaryAction.value = {
-      name: t('user.bruks.newBruk'),
-      action: () => console.log('action')
-    })
-  );
+  const action = {
+    name: t('user.bruks.newBruk'),
+    action: () => (modal.new = true)
+  };
+
+  return isLoggedUser && (primaryAction.value = action);
 };
 
 setPrimaryAction();

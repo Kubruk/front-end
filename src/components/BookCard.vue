@@ -2,7 +2,7 @@
   <div
     class="bg-white border rounded-lg shadow-sm mb-4 md:mb-0 place-self-center w-full"
   >
-    <router-link :to="`/books/${bookId}`">
+    <router-link :to="`/books/${bookId}`" :title="title">
       <h2
         class="text-3xl p-4 bg-bright-gray text-alabaster-400 text-ellipsis break-all whitespace-nowrap overflow-hidden"
       >
@@ -25,7 +25,7 @@
       v-if="author"
       class="text-3xl p-4 bg-bright-gray text-alabaster-400 text-ellipsis break-all whitespace-nowrap overflow-hidden"
     >
-      <router-link :to="`/user/${author._id}/profile`">
+      <router-link :to="`/user/${author._id}/profile`" :title="author.name">
         {{ author.name }}
       </router-link>
     </div>

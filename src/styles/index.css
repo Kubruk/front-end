@@ -15,4 +15,5 @@ html, body {
 }
 .main-page {
     height: 92vh;
+    overflow: auto;
 }

@@ -1,6 +1,6 @@
 <template>
   <button
-    :disabled="disabled"
+    :disabled="disabled || isLoading"
     :type="type"
     class="px-4 py-2 font-semibold rounded-md disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
     :class="classes"
@@ -12,6 +12,11 @@
 
 <script setup>
 import { computed } from 'vue';
+import { storeToRefs } from 'pinia';
+import { loadingStore } from '@/stores/loading';
+
+const loading = loadingStore();
+const { isLoading } = storeToRefs(loading);
 
 const props = defineProps({
   name: {
@@ -23,6 +28,10 @@ const props = defineProps({
     default: false
   },
   cta: {
+    type: Boolean,
+    default: false
+  },
+  ghost: {
     type: Boolean,
     default: false
   },
