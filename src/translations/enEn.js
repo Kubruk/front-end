@@ -23,5 +23,8 @@ export const en = {
       newBruk: 'New Bruk',
       noBruks: "You doesn't have a bruk yet"
     }
+  },
+  validation: {
+    required: 'is a required field'
   }
 };

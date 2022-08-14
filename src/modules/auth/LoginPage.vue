@@ -7,7 +7,7 @@
       class="bg-white rounded-lg w-2/6 h-2/4 inset-0 m-auto p-8 shadow-sm"
       @submit="onSubmit"
     >
-      <h2 class="text-3xl mb-4">Login</h2>
+      <h2 class="text-3xl mb-4">{{ $t('auth.login') }}</h2>
       <label class="w-full font-semibold block" for="email">{{
         $t('auth.email')
       }}</label>
