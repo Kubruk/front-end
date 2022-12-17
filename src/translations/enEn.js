@@ -21,7 +21,10 @@ export const en = {
     name: 'Name',
     bruks: {
       newBruk: 'New Bruk',
-      noBruks: "You doesn't have a bruk yet"
+      noBruks: "You doesn't have a bruk yet",
+      brukForm: {
+        title: 'Bruk title'
+      }
     }
   },
   validation: {
